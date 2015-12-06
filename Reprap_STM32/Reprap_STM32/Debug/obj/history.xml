@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m3 -mthumb -Wall -ffunction-sections -g -O1 -c -DSTM32F103RB -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -I..\..\..\..\workspace\Reprap_STM32\cmsis_boot -I..\..\..\..\workspace\Reprap_STM32\cmsis -I..\..\..\..\workspace\Reprap_STM32\USB\inc -I..\..\..\..\workspace\Reprap_STM32\stm_lib\inc -I..\..\..\..\workspace\Reprap_STM32\stm_lib -I..\..\..\..\workspace -I..\..\..\..\workspace\Reprap_STM32 -I..\..\..\..\workspace\Reprap_STM32\USB">
+      <target file="stm32f10x_dbgmcu.o" lastModified="14dcf78c3f5">
+         <source file="..\..\..\stm_lib\src\stm32f10x_dbgmcu.c" lastModified="14dcf47f822"/>
+      </target>
+      <target file="hw_config.o" lastModified="14dcf78d358">
+         <source file="..\..\..\USB\src\hw_config.c" lastModified="14768e10b61"/>
+      </target>
+      <target file="stm32f10x_spi.o" lastModified="14dcf7902d6">
+         <source file="..\..\..\stm_lib\src\stm32f10x_spi.c" lastModified="147366d05bf"/>
+      </target>
+      <target file="stm32f10x_iwdg.o" lastModified="14dcf791040">
+         <source file="..\..\..\stm_lib\src\stm32f10x_iwdg.c" lastModified="147366cf42a"/>
+      </target>
+      <target file="usb_sil.o" lastModified="14dcf78f153">
+         <source file="..\..\..\USB\src\usb_sil.c" lastModified="13c5e5d7e2d"/>
+      </target>
+      <target file="usb_int.o" lastModified="14dcf78c235">
+         <source file="..\..\..\USB\src\usb_int.c" lastModified="13c5e5d7e5c"/>
+      </target>
+      <target file="stm32f10x_crc.o" lastModified="14dcf78e59c">
+         <source file="..\..\..\stm_lib\src\stm32f10x_crc.c" lastModified="147366cc5af"/>
+      </target>
+      <target file="stm32f10x_rcc.o" lastModified="14dcf78e7cf">
+         <source file="..\..\..\stm_lib\src\stm32f10x_rcc.c" lastModified="147366cbc2f"/>
+      </target>
+      <target file="stm32f10x_pwr.o" lastModified="14dcf78cf57">
+         <source file="..\..\..\stm_lib\src\stm32f10x_pwr.c" lastModified="147366cc910"/>
+      </target>
+      <target file="stm32f10x_i2c.o" lastModified="14dcf7904de">
+         <source file="..\..\..\stm_lib\src\stm32f10x_i2c.c" lastModified="147366d0ae8"/>
+      </target>
+      <target file="misc.o" lastModified="14dcf78feaa">
+         <source file="..\..\..\stm_lib\src\misc.c" lastModified="147366cbbd2"/>
+      </target>
+      <target file="usb_mem.o" lastModified="14dcf790872">
+         <source file="..\..\..\USB\src\usb_mem.c" lastModified="13c5e5d7e7b"/>
+      </target>
+      <target file="usb_endp.o" lastModified="14dcf78fb1a">
+         <source file="..\..\..\USB\src\usb_endp.c" lastModified="13c5e5d294a"/>
+      </target>
+      <target file="usb_istr.o" lastModified="14dcf790c68">
+         <source file="..\..\..\USB\src\usb_istr.c" lastModified="13c5e5d2b0f"/>
+      </target>
+      <target file="startup_stm32f10x_md.o" lastModified="14dcf78cd83">
+         <source file="..\..\..\cmsis_boot\startup\startup_stm32f10x_md.c" lastModified="147366c92d2"/>
+      </target>
+      <target file="stm32_it.o" lastModified="14dcf78f75a">
+         <source file="..\..\..\USB\src\stm32_it.c" lastModified="13c5e5d2a25"/>
+      </target>
+      <target file="stm32f10x_flash.o" lastModified="14dcf78f359">
+         <source file="..\..\..\stm_lib\src\stm32f10x_flash.c" lastModified="147366d0ffa"/>
+      </target>
+      <target file="usb_regs.o" lastModified="14dcf78cd3c">
+         <source file="..\..\..\USB\src\usb_regs.c" lastModified="13c5e5d7eba"/>
+      </target>
+      <target file="usb_pwr.o" lastModified="14dcf78dcb4">
+         <source file="..\..\..\USB\src\usb_pwr.c" lastModified="13c5e5d2998"/>
+      </target>
+      <target file="stm32f10x_bkp.o" lastModified="14dcf790e5c">
+         <source file="..\..\..\stm_lib\src\stm32f10x_bkp.c" lastModified="147366cd076"/>
+      </target>
+      <target file="stm32f10x_exti.o" lastModified="14dcf78e98a">
+         <source file="..\..\..\stm_lib\src\stm32f10x_exti.c" lastModified="147366cd7ae"/>
+      </target>
+      <target file="stm32f10x_gpio.o" lastModified="14dcf78d56e">
+         <source file="..\..\..\stm_lib\src\stm32f10x_gpio.c" lastModified="147366cd41c"/>
+      </target>
+      <target file="stm32f10x_rtc.o" lastModified="14dcf78b71f">
+         <source file="..\..\..\stm_lib\src\stm32f10x_rtc.c" lastModified="147366ce7cf"/>
+      </target>
+      <target file="usb_core.o" lastModified="14dcf78bb6f">
+         <source file="..\..\..\USB\src\usb_core.c" lastModified="13c5e5d7e4d"/>
+      </target>
+      <target file="system_stm32f10x.o" lastModified="14dcf78c598">
+         <source file="..\..\..\cmsis_boot\system_stm32f10x.c" lastModified="147366c9310"/>
+      </target>
+      <target file="usb_desc.o" lastModified="14dcf78c96b">
+         <source file="..\..\..\USB\src\usb_desc.c" lastModified="13c5e5d2a82"/>
+      </target>
+      <target file="stm32f10x_adc.o" lastModified="14dcf78ebc6">
+         <source file="..\..\..\stm_lib\src\stm32f10x_adc.c" lastModified="147366d1b12"/>
+      </target>
+      <target file="usb_init.o" lastModified="14dcf78e080">
+         <source file="..\..\..\USB\src\usb_init.c" lastModified="13c5e5d7ed9"/>
+      </target>
+      <target file="stm32f10x_tim.o" lastModified="14dcf78be6c">
+         <source file="..\..\..\stm_lib\src\stm32f10x_tim.c" lastModified="147366d153e"/>
+      </target>
+      <target file="usb_prop.o" lastModified="14dcf78d939">
+         <source file="..\..\..\USB\src\usb_prop.c" lastModified="14768e1bed4"/>
+      </target>
+      <target file="stm32f10x_wwdg.o" lastModified="14dcf7900a1">
+         <source file="..\..\..\stm_lib\src\stm32f10x_wwdg.c" lastModified="147366d016c"/>
+      </target>
+      <target file="stm32f10x_dma.o" lastModified="14dcf78fcc4">
+         <source file="..\..\..\stm_lib\src\stm32f10x_dma.c" lastModified="147366cdbb2"/>
+      </target>
+      <target file="stm32f10x_usart.o" lastModified="14dcf78edc2">
+         <source file="..\..\..\stm_lib\src\stm32f10x_usart.c" lastModified="147366d2474"/>
+      </target>
+      <target file="main.o" lastModified="14dcf78e406">
+         <source file="..\..\..\main.c" lastModified="149c4f7e581"/>
+      </target>
+   </processor>
+</history>
