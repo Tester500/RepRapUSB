@@ -6,6 +6,6 @@ The project includes the implementation of various joint controllers basic requi
 2. Command (G-Code) from http://reprap.org/wiki/G-code
 
 Folders:
-Reprap_STM32 - Version for STM32F1x based
+Reprap_STM32 - Version for STM32F1x based. Project For CooCox 1.7.8
 
 TODO: Request a product ID for USB from Openmoko http://wiki.openmoko.org/wiki/USB_Product_IDs
