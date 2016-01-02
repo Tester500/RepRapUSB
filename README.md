@@ -1,15 +1,15 @@
 # RepRapUSB
 RepRap Electronics with USB_CDC (Virtual COM port) interface
 
-## The project includes the implementation of various joint controllers basic requirements:
+### The project includes the implementation of various joint controllers basic requirements:
 1. Outside interface standart USB-CDC with same VID-PID
 2. Command (G-Code) from http://reprap.org/wiki/G-code
 
-## Folders:
+### Folders:
 * Reprap_STM32 - Version for STM32F1x based. Project For CooCox 1.7.8
 * Reprap_STM32\CubeMX - CubeMX project
 
-## Current status:
+### Current status:
 * Chip - STM8S103. 
 * Only USB CDC (Virtual COM port) - Loopback mode
 
