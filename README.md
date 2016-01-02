@@ -12,7 +12,7 @@ Folders:
 
 Current status:
 
-Chip - STM8S103
+Chip - STM8S103. 
 Only USB CDC (Virtual COM port) - Loopback mode
 
 TODO: Request a product ID for USB from Openmoko http://wiki.openmoko.org/wiki/USB_Product_IDs
