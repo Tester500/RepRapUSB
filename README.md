@@ -8,4 +8,7 @@ The project includes the implementation of various joint controllers basic requi
 Folders:
 Reprap_STM32 - Version for STM32F1x based. Project For CooCox 1.7.8
 
+Current status:
+Only USB CDC (Virtual COM port) - Loopback mode
+
 TODO: Request a product ID for USB from Openmoko http://wiki.openmoko.org/wiki/USB_Product_IDs
