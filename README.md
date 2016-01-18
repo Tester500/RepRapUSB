@@ -1,5 +1,6 @@
 # RepRapUSB
 RepRap Electronics with USB_CDC (Virtual COM port) interface
+
 License: GPLv3
 
 ### The project includes the implementation of various joint controllers basic requirements:
