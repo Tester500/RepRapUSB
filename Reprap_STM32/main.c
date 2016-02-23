@@ -55,7 +55,11 @@ TIM_HandleTypeDef htim4;
 
 osThreadId defaultTaskHandle;
 osThreadId TaskLedFlashHandle;
+osThreadId TaskUsbReadHandle;
+osThreadId TaskUsbWriteHandle;
 osMessageQId InputFromUsbHandle;
+osSemaphoreId SemUsbReadHandle;
+osSemaphoreId SemUsbWriteHandle;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
@@ -75,6 +79,8 @@ static void MX_TIM3_Init(void);
 static void MX_TIM4_Init(void);
 void StartDefaultTask(void const * argument);
 void LedFlash(void const * argument);
+void UsbRead(void const * argument);
+void UsbWrite(void const * argument);
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
                 
@@ -113,6 +119,7 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM3_Init();
   MX_TIM4_Init();
+  MX_USB_DEVICE_Init();
 
   /* USER CODE BEGIN 2 */
 
@@ -121,6 +128,15 @@ int main(void)
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
+
+  /* Create the semaphores(s) */
+  /* definition and creation of SemUsbRead */
+  osSemaphoreDef(SemUsbRead);
+  SemUsbReadHandle = osSemaphoreCreate(osSemaphore(SemUsbRead), 1);
+
+  /* definition and creation of SemUsbWrite */
+  osSemaphoreDef(SemUsbWrite);
+  SemUsbWriteHandle = osSemaphoreCreate(osSemaphore(SemUsbWrite), 1);
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
@@ -138,6 +154,14 @@ int main(void)
   /* definition and creation of TaskLedFlash */
   osThreadDef(TaskLedFlash, LedFlash, osPriorityNormal, 0, 64);
   TaskLedFlashHandle = osThreadCreate(osThread(TaskLedFlash), NULL);
+
+  /* definition and creation of TaskUsbRead */
+  osThreadDef(TaskUsbRead, UsbRead, osPriorityNormal, 0, 64);
+  TaskUsbReadHandle = osThreadCreate(osThread(TaskUsbRead), NULL);
+
+  /* definition and creation of TaskUsbWrite */
+  osThreadDef(TaskUsbWrite, UsbWrite, osPriorityNormal, 0, 64);
+  TaskUsbWriteHandle = osThreadCreate(osThread(TaskUsbWrite), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -307,7 +331,7 @@ void MX_RTC_Init(void)
   DateToUpdate.WeekDay = RTC_WEEKDAY_MONDAY;
   DateToUpdate.Month = RTC_MONTH_JANUARY;
   DateToUpdate.Date = 0x1;
-  DateToUpdate.Year = 0x10;
+  DateToUpdate.Year = 0x16;
 
   HAL_RTC_SetDate(&hrtc, &DateToUpdate, FORMAT_BCD);
 
@@ -481,10 +505,33 @@ void LedFlash(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	  HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_13);
-	  osDelay(500);
+    osDelay(1);
   }
   /* USER CODE END LedFlash */
+}
+
+/* UsbRead function */
+void UsbRead(void const * argument)
+{
+  /* USER CODE BEGIN UsbRead */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END UsbRead */
+}
+
+/* UsbWrite function */
+void UsbWrite(void const * argument)
+{
+  /* USER CODE BEGIN UsbWrite */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END UsbWrite */
 }
 
 #ifdef USE_FULL_ASSERT
