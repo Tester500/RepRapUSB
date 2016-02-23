@@ -22,7 +22,7 @@
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_cdc_if.c" partName="usbd_cdc_if.c" path="D:/CooCox/workspace/Reprap_STM32/usbd_cdc_if.c" title="usbd_cdc_if.c" tooltip="D:/CooCox/workspace/Reprap_STM32/usbd_cdc_if.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Reprap_STM32/usbd_cdc_if.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="8720" selectionTopPixel="3585"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="8525" selectionTopPixel="3585"/>
 </editor>
 </editors>
 <views>
@@ -218,11 +218,6 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_cdc_if.c" tooltip="Reprap_STM32/usbd_cdc_if.c">
 <persistable path="/Reprap_STM32/usbd_cdc_if.c"/>
 </file>
-<file factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage" name="" tooltip="">
-<persistable>
-<org.coocox.welcome.ui.WelcomePage/>
-</persistable>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="Reprap_STM32/main.c">
 <persistable path="/Reprap_STM32/main.c"/>
 </file>
@@ -258,6 +253,9 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f1xx.h" tooltip="usb_mass_storage_sd/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h">
 <persistable path="/usb_mass_storage_sd/Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="usb_mass_storage_sd/Src/main.c">
+<persistable path="/usb_mass_storage_sd/Src/main.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="usb_mass_storage_sd/Src/main.c">
 <persistable path="/usb_mass_storage_sd/Src/main.c"/>

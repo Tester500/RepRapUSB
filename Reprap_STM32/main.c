@@ -4,7 +4,7 @@
   * Description        : Main program body
   ******************************************************************************
   *
-  * COPYRIGHT(c) 2015 STMicroelectronics
+  * COPYRIGHT(c) 2016 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -75,6 +75,9 @@ static void MX_TIM3_Init(void);
 static void MX_TIM4_Init(void);
 void StartDefaultTask(void const * argument);
 void LedFlash(void const * argument);
+
+void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
+                
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
@@ -188,7 +191,8 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
   HAL_RCC_OscConfig(&RCC_OscInitStruct);
 
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_SYSCLK|RCC_CLOCKTYPE_PCLK1;
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
@@ -366,6 +370,8 @@ void MX_TIM3_Init(void)
 
   HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_3);
 
+  HAL_TIM_MspPostInit(&htim3);
+
 }
 
 /* TIM4 init function */
@@ -402,6 +408,8 @@ void MX_TIM4_Init(void)
 
   HAL_TIM_PWM_ConfigChannel(&htim4, &sConfigOC, TIM_CHANNEL_3);
 
+  HAL_TIM_MspPostInit(&htim4);
+
 }
 
 /** 
@@ -435,6 +443,9 @@ void MX_GPIO_Init(void)
   __GPIOD_CLK_ENABLE();
   __GPIOA_CLK_ENABLE();
   __GPIOB_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(LedPin_GPIO_Port, LedPin_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : LedPin_Pin */
   GPIO_InitStruct.Pin = LedPin_Pin;
@@ -472,7 +483,6 @@ void LedFlash(void const * argument)
   {
 	  HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_13);
 	  osDelay(500);
-
   }
   /* USER CODE END LedFlash */
 }
