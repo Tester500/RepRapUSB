@@ -505,7 +505,8 @@ void LedFlash(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    HAL_GPIO_TogglePin(LedPin_GPIO_Port, LedPin_Pin); //Toggle Led 1/2 sec
+    osDelay(500);
   }
   /* USER CODE END LedFlash */
 }
