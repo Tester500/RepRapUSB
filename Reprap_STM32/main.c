@@ -57,7 +57,8 @@ osThreadId defaultTaskHandle;
 osThreadId TaskLedFlashHandle;
 osThreadId TaskUsbReadHandle;
 osThreadId TaskUsbWriteHandle;
-osMessageQId InputFromUsbHandle;
+osMessageQId QueUsbReadHandle;
+osMessageQId QueUsbWriteHandle;
 osSemaphoreId SemUsbReadHandle;
 osSemaphoreId SemUsbWriteHandle;
 
@@ -168,9 +169,13 @@ int main(void)
   /* USER CODE END RTOS_THREADS */
 
   /* Create the queue(s) */
-  /* definition and creation of InputFromUsb */
-  osMessageQDef(InputFromUsb, 128, uint8_t);
-  InputFromUsbHandle = osMessageCreate(osMessageQ(InputFromUsb), NULL);
+  /* definition and creation of QueUsbRead */
+  osMessageQDef(QueUsbRead, 128, uint8_t);
+  QueUsbReadHandle = osMessageCreate(osMessageQ(QueUsbRead), NULL);
+
+  /* definition and creation of QueUsbWrite */
+  osMessageQDef(QueUsbWrite, 128, uint8_t);
+  QueUsbWriteHandle = osMessageCreate(osMessageQ(QueUsbWrite), NULL);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
