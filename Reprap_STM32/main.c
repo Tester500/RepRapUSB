@@ -57,14 +57,14 @@ osThreadId defaultTaskHandle;
 osThreadId TaskLedFlashHandle;
 osThreadId TaskUsbReadHandle;
 osThreadId TaskUsbWriteHandle;
-osMessageQId QueUsbReadHandle;
-osMessageQId QueUsbWriteHandle;
 osSemaphoreId SemUsbReadHandle;
 osSemaphoreId SemUsbWriteHandle;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-
+xQueueHandle QueUsbReadHandle;
+xQueueHandle QueUsbWriteHandle;
+extern uint8_t UserTxBufferFS[];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -170,15 +170,14 @@ int main(void)
 
   /* Create the queue(s) */
   /* definition and creation of QueUsbRead */
-  osMessageQDef(QueUsbRead, 128, uint8_t);
-  QueUsbReadHandle = osMessageCreate(osMessageQ(QueUsbRead), NULL);
 
   /* definition and creation of QueUsbWrite */
-  osMessageQDef(QueUsbWrite, 128, uint8_t);
-  QueUsbWriteHandle = osMessageCreate(osMessageQ(QueUsbWrite), NULL);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
+  QueUsbReadHandle = xQueueCreate(128,  sizeof( uint8_t ));
+  QueUsbWriteHandle = xQueueCreate(128, sizeof( uint8_t ));
+
   /* USER CODE END RTOS_QUEUES */
  
 
@@ -520,10 +519,11 @@ void LedFlash(void const * argument)
 void UsbRead(void const * argument)
 {
   /* USER CODE BEGIN UsbRead */
+	uint8_t ReadByte;
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+//	xQueueReceive(QueUsbReadHandle, &ReadByte, portMAX_DELAY);
   }
   /* USER CODE END UsbRead */
 }
@@ -532,10 +532,19 @@ void UsbRead(void const * argument)
 void UsbWrite(void const * argument)
 {
   /* USER CODE BEGIN UsbWrite */
+  static uint32_t CountWriteByte;
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	  xQueueReceive(QueUsbWriteHandle, UserTxBufferFS[0], portMAX_DELAY);
+	  for (CountWriteByte = 1; CountWriteByte < 65; ++CountWriteByte)
+	  {
+	  if (xQueueReceive(QueUsbWriteHandle, UserTxBufferFS[CountWriteByte], portMAX_DELAY)==errQUEUE_EMPTY)
+		  {
+			  USBD_CDC_SetTxBuffer(&hUsbDeviceFS, &UserTxBufferFS[0], CountWriteByte);
+			  break;
+		  }
+	  }
   }
   /* USER CODE END UsbWrite */
 }
