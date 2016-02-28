@@ -497,7 +497,7 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    osDelay(100);
   }
   /* USER CODE END 5 */ 
 }
@@ -506,11 +506,24 @@ void StartDefaultTask(void const * argument)
 void LedFlash(void const * argument)
 {
   /* USER CODE BEGIN LedFlash */
+  uint8_t TestString[]="Test\r\n";
+  portBASE_TYPE xStatus;
+
   /* Infinite loop */
   for(;;)
   {
-    HAL_GPIO_TogglePin(LedPin_GPIO_Port, LedPin_Pin); //Toggle Led 1/2 sec
-    osDelay(500);
+	osDelay(1000);
+	HAL_GPIO_TogglePin(LedPin_GPIO_Port, LedPin_Pin); //Toggle Led 1/2 sec
+    for (portBASE_TYPE CountItems = 0; CountItems < 6; ++CountItems)
+    {
+    xStatus=xQueueSend(QueUsbWriteHandle,&TestString[CountItems],0);
+	}
+    if (xStatus!=pdPASS)
+    {
+    	HAL_GPIO_TogglePin(LedPin_GPIO_Port, LedPin_Pin);
+    }
+
+
   }
   /* USER CODE END LedFlash */
 }
@@ -532,19 +545,22 @@ void UsbRead(void const * argument)
 void UsbWrite(void const * argument)
 {
   /* USER CODE BEGIN UsbWrite */
-  static uint32_t CountWriteByte;
+  portBASE_TYPE CountWriteByte;
+  portBASE_TYPE xQStatus;
   /* Infinite loop */
   for(;;)
   {
-	  xQueueReceive(QueUsbWriteHandle, UserTxBufferFS[0], portMAX_DELAY);
-	  for (CountWriteByte = 1; CountWriteByte < 65; ++CountWriteByte)
+	  xQueueReceive(QueUsbWriteHandle, &UserTxBufferFS[0], portMAX_DELAY);
+	  for (CountWriteByte = 1; CountWriteByte < 64; ++CountWriteByte)
 	  {
-	  if (xQueueReceive(QueUsbWriteHandle, UserTxBufferFS[CountWriteByte], portMAX_DELAY)==errQUEUE_EMPTY)
+		  xQStatus=xQueueReceive(QueUsbWriteHandle, &UserTxBufferFS[CountWriteByte], 0);
+		  if (xQStatus == errQUEUE_EMPTY)
 		  {
-			  USBD_CDC_SetTxBuffer(&hUsbDeviceFS, &UserTxBufferFS[0], CountWriteByte);
 			  break;
 		  }
 	  }
+	  USBD_CDC_SetTxBuffer(&hUsbDeviceFS, &UserTxBufferFS[0], CountWriteByte);
+	  USBD_CDC_TransmitPacket(&hUsbDeviceFS);
   }
   /* USER CODE END UsbWrite */
 }
